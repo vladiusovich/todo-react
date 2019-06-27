@@ -1,10 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { tsPropertySignature } from '@babel/types';
 
 const AppHeader = ({ title }) => {
     return (
-        <h1>{title}</h1>
+        <div className='app-header d-flex'>
+            <h1>{title}</h1>
+        </div>
     );
 }
 
