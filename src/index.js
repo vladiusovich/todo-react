@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppHeader from './components/AppHeader/AppHeader';
-import SearchPanel from './components/SearchPanel/SearchPanel';
-import TodoList from './components/TodoList/TodoList';
-import ItemStatusFilter from './components/ItemStatusFilter/ItemStatusFilter';
+import App from './components/App/App';
 
 const todoList = [
      { label: 'Купить хлеб', important: false },
@@ -15,16 +12,6 @@ const todoList = [
      { label: 'Лечь спать', important: false },
 ];
 
-const App = () => {
-    return (
-        <div>
-            <AppHeader title='ToDo list project'/>
-            <ItemStatusFilter/>
-            <SearchPanel/>
-            <TodoList todos = {todoList}/>
-        </div>
-    );
-}
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App todoList = {todoList} />, document.getElementById('root'));
 
