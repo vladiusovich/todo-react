@@ -12,18 +12,24 @@ class TodoListItem extends Component {
     }
 
     onLabelClick = () => {
-        this.setState(
-            {
+        this.setState((state)=> {
+            return {
                 done: !this.state.done,
             }
-        ); 
+        }); 
     }
 
+    // onTrashClick = (id) => {
+    //     props.onDeleted();
+    // }
+
     onImportantClick = () => {
-        this.setState(
-            {
-                important: !this.state.important
+        this.setState((state)=> {
+            return {
+                important: !state.important
             }
+        }
+        
         ); 
     }
 
@@ -51,7 +57,9 @@ class TodoListItem extends Component {
                     <i className="fa fa-exclamation"/>
                 </button>
     
-                <button type="button" className="btn btn-outline-danger btn-sm">
+                <button type="button" className="btn btn-outline-danger btn-sm" 
+                    onClick = {this.props.onDeleted}
+                >
                     <i className="fa fa-trash-o"/>
                 </button>
             </div>

@@ -3,15 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './components/App/App';
 
 const todoList = [
-     { label: 'Купить хлеб', important: false },
-     { label: 'Изучить React', important: false },
-     { label: 'Заняться йогой', important: true },
-     { label: 'Почитать книгу', important: true },
-     { label: 'Подумать о бытии', important: false },
-     { label: 'Ничего не делать', important: true },
-     { label: 'Лечь спать', important: false },
+     { id: 1, label: 'Купить хлеб', important: false },
+     { id: 2, label: 'Изучить React', important: false },
+     { id: 3, label: 'Заняться йогой', important: true },
+     { id: 4, label: 'Почитать книгу', important: true },
+     { id: 5, label: 'Подумать о бытии', important: false },
+     { id: 6, label: 'Ничего не делать', important: true },
+     { id: 7, label: 'Лечь спать', important: false },
 ];
-
 
 ReactDOM.render(<App todoList = {todoList} />, document.getElementById('root'));
 
