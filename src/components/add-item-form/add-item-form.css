@@ -1,0 +1,16 @@
+.add-item button {
+    padding: .5em 0.8em;
+    background: none;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    font-size: .8rem;
+    transition-duration: .2s;
+}
+
+.add-item button:hover {
+    border-color:hsla(210, 14%, 62%, 1);
+}
+
+.add-item input {
+    margin-right: 5px;
+}

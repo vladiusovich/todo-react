@@ -1,41 +1,13 @@
 import React, {Component} from 'react';
-import './todoListItem.css';
+import './todo-list-item.css';
 
 class TodoListItem extends Component {
     constructor(props){
         super(props);
-
-        this.state = {
-            done: false,
-            important: props.important
-        }
-    }
-
-    onLabelClick = () => {
-        this.setState((state)=> {
-            return {
-                done: !this.state.done,
-            }
-        }); 
-    }
-
-    // onTrashClick = (id) => {
-    //     props.onDeleted();
-    // }
-
-    onImportantClick = () => {
-        this.setState((state)=> {
-            return {
-                important: !state.important
-            }
-        }
-        
-        ); 
     }
 
     render() {
-        const {label} = this.props;
-        const { done, important } = this.state;
+        const { label, done, important } = this.props;
         let className = done ? 'todo-list-item done' : 'todo-list-item';
 
         if (important) {
@@ -45,14 +17,13 @@ class TodoListItem extends Component {
         return (
         <div className={className}>
             <span className="todo-list-item-label" 
-            onClick={this.onLabelClick}
-            > 
+                onClick={this.props.onToggleDone}> 
                 { label } 
             </span>
     
             <div className="float-right">
                 <button type="button" className="btn b-btn-outline-success btn-outline-success btn-sm"
-                onClick={this.onImportantClick}
+                    onClick={this.props.onToggleImportant}
                 >
                     <i className="fa fa-exclamation"/>
                 </button>
