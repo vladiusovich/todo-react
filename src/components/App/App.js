@@ -12,6 +12,8 @@ class App extends Component {
         super();
 
         this.state = {
+            searchValue: '',
+            filter: 'active',
             maxId: 100,
             todoList: props.todoList
         };
@@ -82,9 +84,42 @@ class App extends Component {
         });
     }
 
+    onChangeSearchPanel = (value) => {
+        this.setState(() => {
+            return {
+                searchValue: value
+            }
+        });
+    }
+
+    onSelectFilter = (value) => {
+        console.log(value);
+
+        this.setState(() => {
+            return {
+                selectedFilter: value
+            }
+        });
+    }
+
+    statusFilter = (items, status) => {
+        switch(status) {
+            case 'all':
+                return items;
+            case 'active':
+                return items.filter((item) => !item.done);
+            case 'done':
+                return items.filter((item) => item.done);;                        
+        }
+    }
+
     render() {
-        const importantCount = this.state.todoList.filter( (el) => el.important).length;
-        const doneCount = this.state.todoList.filter( (el) => el.done).length;
+        const filteredList =  this.state.todoList.filter((el)=> { return el.label.includes(this.state.searchValue) });
+
+        const visibleItems = this.statusFilter(filteredList, this.state.filter);
+
+        const importantCount = visibleItems.filter( (el) => el.important).length;
+        const doneCount = visibleItems.filter( (el) => el.done).length;
 
         return (
             <div className="app-container">
@@ -92,9 +127,9 @@ class App extends Component {
                 <div className="margin-line"></div>
                 <AddItem onItemAdded = { this.onItemAdded }/>
                 <div className="margin-line"></div>
-                <SearchPanel/>
+                <SearchPanel onChangeSearchPanel = { this.onChangeSearchPanel }/>
                 <div className="margin-line"></div>
-                <ItemStatusFilter/>
+                <ItemStatusFilter onSelectFilter = { this.onSelectFilter }/>
                 <div className="margin-line"></div>
 
                 <div className="todo-counter">
@@ -104,7 +139,7 @@ class App extends Component {
 
                 <div className="margin-line"></div>
 
-                <TodoList todos = {this.state.todoList} 
+                <TodoList todos = {filteredList} 
                     onDeleted = {this.deleteItem}
                     onToggleImportant = {this.onToggleImportant}
                     onToggleDone = {this.onToggleDone}

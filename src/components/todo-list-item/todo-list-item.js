@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import './todo-list-item.css';
 
 class TodoListItem extends Component {
-    constructor(props){
-        super(props);
-    }
-
     render() {
         const { label, done, important } = this.props;
         let className = done ? 'todo-list-item done' : 'todo-list-item';

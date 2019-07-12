@@ -1,8 +1,8 @@
 import React from 'react';
 
-const SearchPanel = () => {
+const SearchPanel = (props) => {
     return (<div>
-            <input placeholder="search" className='form-control ds-input'></input>
+            <input placeholder="search" className='form-control ds-input' onChange={ (e) => props.onChangeSearchPanel(e.target.value)}></input>
         </div>);
 }
 
