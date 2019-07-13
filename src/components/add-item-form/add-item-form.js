@@ -7,15 +7,13 @@ class AddItem extends Component {
         this.inputRef = React.createRef();
 
         this.state = {
-            label: '',
-            isEmpty: true
+            label: ''
         };
     }
 
     onChangeInput = (e) => {
         this.setState({
-             label: e.target.value,
-             isEmpty: e.target.value === ''
+             label: e.target.value
          });
     }
 
@@ -25,9 +23,14 @@ class AddItem extends Component {
         const label = this.state.label;
 
         if (label === '') {
+
             this.inputRef.current.classList.remove('warning');
-            this.inputRef.current.classList.add('warning');
             this.inputRef.current.focus();
+            
+            window.requestAnimationFrame(() => {
+                this.inputRef.current.classList.add('warning');
+            });
+
         } else {
             this.props.onItemAdded(label);
 
