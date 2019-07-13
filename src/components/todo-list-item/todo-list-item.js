@@ -5,9 +5,11 @@ class TodoListItem extends Component {
     render() {
         const { label, done, important } = this.props;
         let className = done ? 'todo-list-item done' : 'todo-list-item';
+        let importantClassName = '';
 
         if (important) {
             className += ' important'
+            importantClassName = ' important'
         }
     
         return (
@@ -18,7 +20,7 @@ class TodoListItem extends Component {
             </span>
     
             <div className="float-right">
-                <button type="button" className="btn b-btn-outline-success btn-outline-success btn-sm"
+                <button type="button" className={`btn b-btn-outline-success btn-outline-success btn-sm ${importantClassName}`}
                     onClick={this.props.onToggleImportant}
                 >
                     <i className="fa fa-exclamation"/>

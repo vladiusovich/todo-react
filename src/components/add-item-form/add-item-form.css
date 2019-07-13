@@ -13,4 +13,23 @@
 
 .add-item input {
     margin-right: 5px;
+    transition: linear 0.2s;
 }
+
+.add-item input.warning {
+    animation: pulsing;
+    animation-duration: 0.5s;
+    animation-iteration-count: 2;
+}
+
+@keyframes pulsing {
+    0% {
+        box-shadow: none; 
+    }
+    50% {
+        box-shadow: 0 0 0 0.2rem rgba(255, 153, 0, 0.514);
+    }
+    100% {
+        box-shadow: none; 
+    }
+  }

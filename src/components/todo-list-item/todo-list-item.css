@@ -3,6 +3,12 @@
     border: 1px solid #d3d3d3;
     border-radius: 4px;
     margin-bottom: 5px;
+
+    transition: .1s;
+}
+
+.todo-list-item:hover {
+    border: 1px solid #818181;
 }
 
 .todo-list-item-label {
@@ -17,7 +23,13 @@
 
 .todo-list-item.done {
     text-decoration: line-through;
+    /* background-color: #28a745; */
+    box-shadow: none !important;
 }
+
+/* .todo-list-item.done .todo-list-item-label {
+    color: white;
+} */
 
 .todo-list-item.important .todo-list-item-label {
     font-weight: bold;
@@ -27,5 +39,15 @@
 .todo-counter__item {
     margin-right: 10px;
     color: hsla(0, 0%, 60%, 1);
+}
+
+.btn-outline-success.important {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.todo-list-item.important {
+    box-shadow: 0 0 0 1px steelblue;
 }
 
